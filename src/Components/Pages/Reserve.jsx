@@ -1,5 +1,26 @@
+import { useContext } from "react";
+import { InitialContext } from "../Providers/IntialProvider";
 
 const Reserve = () => {
+    const { setFirstName, setLastName, setEmail, setPhone } = useContext(InitialContext)
+
+    // Contact Information Data handle
+
+    const handleFirstName = (firstName) => {
+        setFirstName(firstName)
+    }
+    const handleLastName = (lastName) => {
+        setLastName(lastName)
+    }
+    const handleEmail = (email) => {
+        setEmail(email)
+    }
+    const handlePhone = (phone) => {
+        setPhone(phone)
+    }
+
+
+
     return (
         <>
             {/* header */}
@@ -34,34 +55,31 @@ const Reserve = () => {
                             <div className="label">
                                 <span className="label-text">First Name<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
-                            <input type="text" name="first-name" required  className="input input-bordered w-full max-w-xs" />
+                            <input type="text" name="first-name" onBlur={(e) => handleFirstName(e.target.value)} required className="input input-bordered w-full max-w-xs" />
                         </label>
 
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Last Name<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
-                            <input type="text" name="last-name" required  className="input input-bordered w-full max-w-xs" />
+                            <input type="text" name="last-name" required onBlur={(e) => handleLastName(e.target.value)} className="input input-bordered w-full max-w-xs" />
                         </label>
 
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Email<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
-                            <input type="email" required name="email" className="input input-bordered w-full max-w-xs" />
+                            <input type="email" required name="email" onBlur={(e) => handleEmail(e.target.value)} className="input input-bordered w-full max-w-xs" />
                         </label>
-                        
+
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Phone<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
-                            <input type="text" name="phone" required  className="input input-bordered w-full max-w-xs" />
+                            <input type="text" name="phone" required onBlur={(e) => handlePhone(e.target.value)} className="input input-bordered w-full max-w-xs" />
                         </label>
 
                     </div>
-
-
-
                 </div>
 
 

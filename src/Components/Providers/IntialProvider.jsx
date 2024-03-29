@@ -13,11 +13,27 @@ const IntialProvider = ({children}) => {
         .then(res=> setCars(res.data.data))
     },[])
 
+
+    const [firstName,setFirstName] = useState(null)
+    const [lastName,setLastName] = useState(null)
+    const [email,setEmail] = useState(null)
+    const [phone,setPhone] = useState(null)
+
     
     // provided data
     const data = {
-        cars
+        cars,
+        setFirstName,
+        setLastName,
+        setEmail,
+        setPhone,
+        firstName,
+        lastName,
+        email,
+        phone
+
     }
+    
 
     return (
         <InitialContext.Provider value={data}>
