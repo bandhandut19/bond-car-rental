@@ -13,16 +13,24 @@ const IntialProvider = ({children}) => {
         .then(res=> setCars(res.data.data))
     },[])
 
-
+    //contact-information form data
     const [firstName,setFirstName] = useState(null)
     const [lastName,setLastName] = useState(null)
     const [email,setEmail] = useState(null)
     const [phone,setPhone] = useState(null)
 
+    // additional charges data
+    const [cdw,setCdw] = useState(null)
+    const [li,setLi] = useState(null)
+    const [rt,setRt] = useState(null)
     
+
+
     // provided data
     const data = {
         cars,
+
+        // contact-information
         setFirstName,
         setLastName,
         setEmail,
@@ -30,9 +38,18 @@ const IntialProvider = ({children}) => {
         firstName,
         lastName,
         email,
-        phone
+        phone,
+
+        // additional charges (true,false)
+        setCdw,
+        setLi,
+        setRt,
+        cdw,
+        li,
+        rt
 
     }
+   
     
 
     return (
