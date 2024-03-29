@@ -1,24 +1,14 @@
 import { useContext } from "react";
 import { InitialContext } from "../Providers/IntialProvider";
-import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css'
-import { CiCalendarDate } from "react-icons/ci";
+import ChargesSummary from "../ChargesSummary/ChargesSummary";
+import ReservationDetails from "../ReservationDetails/ReservationDetails";
 
 const Reserve = () => {
     const { setFirstName, setLastName, setEmail, setPhone,
         setCdw, setLi, setRt,
-        cdw, li, rt,
         setVehicleType,
         setVehicle,
-
-        setPickupDate,
-        pickupDate,
-
-        setReturnDate,
-        returnDate,
-
-        duration,
-
         cars } = useContext(InitialContext)
 
     // Contact Information Data handle
@@ -76,108 +66,14 @@ const Reserve = () => {
 
 
             {/* form container  */}
+
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
 
                 {/* Reservation details form container */}
                 <div>
                     <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Reservation Details</h1>
-
-
-                    <div className="mt-2 border-2 px-5 py-3 rounded-md" >
-
-                        <label className="form-control w-full max-w-xs">
-                            <div className="label">
-                                <span className="label-text">Reservation ID</span>
-                            </div>
-                            <div className="input input-bordered w-full max-w-xs">
-
-                                {/* will generate random reservation id here  */}
-
-                            </div>
-                        </label>
-
-                        <label className="form-control w-full max-w-xs">
-                            <div className="label">
-                                <span className="label-text">Pickup Date<span className="text-red-600 font-extrabold">*</span></span>
-                            </div>
-                            <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
-
-                                <Datetime
-                                    value={pickupDate}
-                                    onChange={(date) => setPickupDate(date)}
-                                    placeholderText="Select Date and Time"
-                                    inputProps={{ placeholder: 'Select Date and Time' }}
-                                />
-                                <CiCalendarDate className="text-3xl" />
-                            </div>
-                        </label>
-
-
-                        <label className="form-control w-full max-w-xs">
-                            <div className="label">
-                                <span className="label-text">Return Date<span className="text-red-600 font-extrabold">*</span></span>
-                            </div>
-                            <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
-
-                                <Datetime
-                                    value={returnDate}
-                                    onChange={(date) => setReturnDate(date)}
-                                    placeholderText="Select Date and Time"
-                                    inputProps={{ placeholder: 'Select Date and Time' }}
-                                />
-                                <CiCalendarDate className="text-3xl" />
-                            </div>
-                        </label>
-
-                        <div className="mt-5 grid grid-cols-2 items-center justify-center px-1">
-                            <div>
-                                <h1 className="label-text">Duration</h1>
-                            </div>
-                            <div>
-                                <div className="border-2 py-1 px-2 rounded-md bg-green-100">
-                                    <p className="text-sm">
-                                        {duration && (duration.weeks > 0 || duration.days > 0 || duration.hours > 0 || duration.minutes > 0) ? (
-                                            <span>
-                                                {duration.weeks > 0 && <span>{duration.weeks} Week</span>}
-                                                {duration.weeks > 0 && (duration.days > 0 || duration.hours > 0 || duration.minutes > 0) && <span className="ml-1">,</span>}
-                                                {duration.days > 0 && <span className="ml-1">{duration.days} Day</span>}
-                                                {duration.days > 0 && (duration.hours > 0 || duration.minutes > 0) && <span className="ml-1">,</span>}
-                                                {duration.hours > 0 && <span className="ml-1">{duration.hours} Hour</span>}
-                                                {duration.hours > 0 && duration.minutes > 0 && <span className="ml-1">,</span>}
-                                                {duration.minutes > 0 && <span className="ml-1">{duration.minutes} Minute</span>}
-                                            </span>
-                                        ) : "Select date and time"}
-                                    </p>
-
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <label className="form-control w-full max-w-xs">
-                            <div className="label mt-3">
-                                <span className="label-text">Discount</span>
-                            </div>
-                            <div className="border-2 w-full max-w-xs py-5 px-2 rounded-md flex justify-between">
-                                {/* <span>discount will be here</span> */}
-
-                            </div>
-                        </label>
-
-
-                    </div>
-
-
-
+                    <ReservationDetails></ReservationDetails>
                 </div>
-
-
-
-
-
 
 
                 {/* Customer Information form container */}
@@ -224,64 +120,7 @@ const Reserve = () => {
                 <div>
                     <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Charges Summary</h1>
 
-                    <div className="border-2 border-purple-500 px-5 py-3 bg-purple-100 rounded-md overflow-x-auto">
-                        <table className="table">
-                            <thead className=" border-b-2 border-purple-600">
-                                <tr  >
-
-                                    <th className="text-black">Charge</th>
-                                    <th className="text-black">Unit</th>
-                                    <th className="text-black">Rate</th>
-                                    <th className="text-black">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* daily */}
-                                <tr>
-                                    <td>Daily</td>
-                                    <td>1</td>
-                                    <td>10</td>
-                                    <td>100</td>
-                                </tr>
-                                {/* weekly */}
-                                <tr>
-                                    <td>Weekly</td>
-                                    <td>1</td>
-                                    <td>10</td>
-                                    <td>100</td>
-                                </tr>
-
-                                {/* additonal charges */}
-                                {
-                                    (cdw && <tr>
-                                        <td>Collision Damage Wavier</td>
-                                        <td></td>
-                                        <td>$9.00</td>
-                                        <td>$9.00</td>
-                                    </tr>)
-                                }
-                                {
-                                    (li && <tr>
-                                        <td>Liability Insurance</td>
-                                        <td></td>
-                                        <td>$15.00</td>
-                                        <td>$15.00</td>
-                                    </tr>)
-                                }
-                                {
-                                    (rt && <tr>
-                                        <td>Collision Damage Wavier</td>
-                                        <td></td>
-                                        <td>11.5%</td>
-                                        <td>tax amount</td>
-                                    </tr>)
-                                }
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
+                    <ChargesSummary></ChargesSummary>
 
                 </div>
 
