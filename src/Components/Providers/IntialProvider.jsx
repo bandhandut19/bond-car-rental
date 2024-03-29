@@ -13,7 +13,7 @@ const IntialProvider = ({children}) => {
         .then(res=> setCars(res.data.data))
     },[])
 
-    //contact-information form data
+    // contact-information form data
     const [firstName,setFirstName] = useState(null)
     const [lastName,setLastName] = useState(null)
     const [email,setEmail] = useState(null)
@@ -24,6 +24,10 @@ const IntialProvider = ({children}) => {
     const [li,setLi] = useState(null)
     const [rt,setRt] = useState(null)
     
+
+    // vehicle informations
+    const[vehicleType,setVehicleType] = useState(null)
+    const[vehicle,setVehicle] = useState(null)
 
 
     // provided data
@@ -46,9 +50,17 @@ const IntialProvider = ({children}) => {
         setRt,
         cdw,
         li,
-        rt
+        rt,
+
+        // vehicle informations
+        vehicleType,
+        vehicle,
+        setVehicleType,setVehicle
+
 
     }
+    console.log( vehicleType,
+        vehicle,)
    
     
 
