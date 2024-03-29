@@ -16,6 +16,8 @@ const Reserve = () => {
         setReturnDate,
         returnDate,
 
+        duration,
+
         cars } = useContext(InitialContext)
 
     // Contact Information Data handle
@@ -88,7 +90,7 @@ const Reserve = () => {
                             </div>
                             <div className="input input-bordered w-full max-w-xs">
 
-                                {/* will generate random id here  */}
+                                {/* will generate random reservation id here  */}
 
                             </div>
                         </label>
@@ -100,10 +102,10 @@ const Reserve = () => {
                             <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
 
                                 <Datetime
-                                value={pickupDate}
-                                onChange={(date)=>setPickupDate(date)}
-                                placeholderText="Select Date and Time"
-                                inputProps={{ placeholder: 'Select Date and Time' }}
+                                    value={pickupDate}
+                                    onChange={(date) => setPickupDate(date)}
+                                    placeholderText="Select Date and Time"
+                                    inputProps={{ placeholder: 'Select Date and Time' }}
                                 />
                                 <CiCalendarDate className="text-3xl" />
                             </div>
@@ -117,15 +119,37 @@ const Reserve = () => {
                             <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
 
                                 <Datetime
-                                value={returnDate}
-                                onChange={(date)=>setReturnDate(date)}
-                                placeholderText="Select Date and Time"
-                                inputProps={{ placeholder: 'Select Date and Time' }}
+                                    value={returnDate}
+                                    onChange={(date) => setReturnDate(date)}
+                                    placeholderText="Select Date and Time"
+                                    inputProps={{ placeholder: 'Select Date and Time' }}
                                 />
                                 <CiCalendarDate className="text-3xl" />
                             </div>
                         </label>
 
+                        <div className="mt-5 grid grid-cols-2 items-center justify-center px-1">
+                            <div>
+                                <h1 className="label-text">Duration</h1>
+                            </div>
+                            <div>
+                                <div className="border-2 py-1 px-2 rounded-md">
+                                    <h1 className="text-sm"> {duration}</h1>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label mt-3">
+                                <span className="label-text">Discount</span>
+                            </div>
+                            <div className="border-2 w-full max-w-xs py-5 px-2 rounded-md flex justify-between">
+                                {/* <span>discount will be here</span> */}
+
+                            </div>
+                        </label>
 
 
                     </div>
@@ -180,9 +204,9 @@ const Reserve = () => {
 
 
 
-                {/* Charges Summery */}
+                {/* Charges Summary */}
                 <div>
-                    <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Charges Summery</h1>
+                    <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Charges Summary</h1>
 
                 </div>
 
@@ -234,9 +258,29 @@ const Reserve = () => {
                     <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Additional Charges</h1>
                     <div className="mt-2 border-2 px-5 py-3 rounded-md" >
                         <ul>
-                            <li> <input type="checkbox" onChange={(e) => handleCdw(e.target.checked)} /> Collison Damage Waiver</li>
-                            <li> <input type="checkbox" onChange={(e) => handleLi(e.target.checked)} /> Liability Insurance</li>
-                            <li> <input type="checkbox" onChange={(e) => handleRt(e.target.checked)} /> Rental Tax</li>
+                            <li className="mb-5">
+                                <div className="flex justify-between">
+                                    <input type="checkbox" onChange={(e) => handleCdw(e.target.checked)} />
+                                    <h1 className="ml-2">Collison Damage Waiver</h1>
+                                    <h2 className="ml-10">$9.00</h2>
+                                </div>
+                            </li>
+                            <li className="mb-5">
+                                <div className="flex justify-between">
+                                    <input type="checkbox" onChange={(e) => handleLi(e.target.checked)} />
+                                    <h1 className="ml-2">Liability Insurance</h1>
+                                    <h2 className="ml-2">$15.00</h2>
+                                </div>
+                            </li>
+                            <li className="mb-5">
+                                <div className="flex justify-between">
+                                    <input type="checkbox" onChange={(e) => handleRt(e.target.checked)} />
+                                    <h1 className="ml-2">Rental Tax</h1>
+                                    <h2 className="ml-2">11.5%</h2>
+                                </div>
+
+
+                            </li>
                         </ul>
                     </div>
 

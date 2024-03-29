@@ -38,6 +38,9 @@ const IntialProvider = ({children}) => {
     const [returnDate,setReturnDate] = useState(null)
 
 
+    // duration
+    const [duration,setDuration] = useState("Set date and time")
+
     // provided data
     const data = {
         cars,
@@ -72,10 +75,13 @@ const IntialProvider = ({children}) => {
         // return-date
         returnDate,
         setReturnDate,
-
+        
+        //duration
+        duration,
+        setDuration
 
     }
-    
+
     // console.log( picupDate?.format('YYYY-MM-DD'))
     // console.log( picupDate?.format('HH:mm'))
 
