@@ -30,6 +30,14 @@ const IntialProvider = ({children}) => {
     const[vehicle,setVehicle] = useState(null)
 
 
+    // pickup-date
+    const [picupDate,setPickupDate] = useState(null)
+
+
+    // return-date
+    const [returnDate,setReturnDate] = useState(null)
+
+
     // provided data
     const data = {
         cars,
@@ -55,12 +63,25 @@ const IntialProvider = ({children}) => {
         // vehicle informations
         vehicleType,
         vehicle,
-        setVehicleType,setVehicle
+        setVehicleType,setVehicle,
+
+        // pickup-date
+        picupDate,
+        setPickupDate,
+
+        // return-date
+        returnDate,
+        setReturnDate,
 
 
     }
-    console.log( vehicleType,
-        vehicle,)
+    
+    // console.log( picupDate?.format('YYYY-MM-DD'))
+    // console.log( picupDate?.format('HH:mm'))
+
+
+    // console.log( returnDate?.format('YYYY-MM-DD'))
+    // console.log( returnDate?.format('HH:mm'))
    
     
 

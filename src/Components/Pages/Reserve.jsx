@@ -1,12 +1,21 @@
 import { useContext } from "react";
 import { InitialContext } from "../Providers/IntialProvider";
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css'
+import { CiCalendarDate } from "react-icons/ci";
 
 const Reserve = () => {
-    const { setFirstName, setLastName, setEmail, setPhone, 
-        setCdw, setLi, setRt, 
+    const { setFirstName, setLastName, setEmail, setPhone,
+        setCdw, setLi, setRt,
         setVehicleType,
         setVehicle,
-        
+
+        setPickupDate,
+        pickupDate,
+
+        setReturnDate,
+        returnDate,
+
         cars } = useContext(InitialContext)
 
     // Contact Information Data handle
@@ -39,10 +48,10 @@ const Reserve = () => {
 
     // Vehicle Informations
 
-    const handleVehicleType =(value)=>{
+    const handleVehicleType = (value) => {
         setVehicleType(value)
     }
-    const handleVehicle =(value)=>{
+    const handleVehicle = (value) => {
         setVehicle(value)
     }
 
@@ -70,7 +79,64 @@ const Reserve = () => {
                 <div>
                     <h1 className="border-b-2 border-purple-500 font-bold text-xl mb-5">Reservation Details</h1>
 
+
+                    <div className="mt-2 border-2 px-5 py-3 rounded-md" >
+
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label">
+                                <span className="label-text">Reservation ID</span>
+                            </div>
+                            <div className="input input-bordered w-full max-w-xs">
+
+                                {/* will generate random id here  */}
+
+                            </div>
+                        </label>
+
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label">
+                                <span className="label-text">Pickup Date<span className="text-red-600 font-extrabold">*</span></span>
+                            </div>
+                            <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
+
+                                <Datetime
+                                value={pickupDate}
+                                onChange={(date)=>setPickupDate(date)}
+                                placeholderText="Select Date and Time"
+                                inputProps={{ placeholder: 'Select Date and Time' }}
+                                />
+                                <CiCalendarDate className="text-3xl" />
+                            </div>
+                        </label>
+
+
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label">
+                                <span className="label-text">Return Date<span className="text-red-600 font-extrabold">*</span></span>
+                            </div>
+                            <div className="border-2 w-full max-w-xs py-1 px-2 rounded-md flex justify-between">
+
+                                <Datetime
+                                value={returnDate}
+                                onChange={(date)=>setReturnDate(date)}
+                                placeholderText="Select Date and Time"
+                                inputProps={{ placeholder: 'Select Date and Time' }}
+                                />
+                                <CiCalendarDate className="text-3xl" />
+                            </div>
+                        </label>
+
+
+
+                    </div>
+
+
+
                 </div>
+
+
+
+
 
 
 
@@ -129,29 +195,29 @@ const Reserve = () => {
 
                     <div className="mt-2 border-2 px-5 py-3 rounded-md">
 
-                    <label className="form-control w-full max-w-xs">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Vehicle Type<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
                             <select className="border-2 rounded-md p-2 px-1 w-full max-w-xs"
-                            onChange={(e)=>handleVehicleType(e.target.value)}
-                            name="vehicle-type" id="">
-                            <option value=""></option>
-                            {cars.map((car)=> <option value={car.type} key={car.id}>{car.type} </option>)}
-                                
+                                onChange={(e) => handleVehicleType(e.target.value)}
+                                name="vehicle-type" id="">
+                                <option value=""></option>
+                                {cars.map((car) => <option value={car.type} key={car.id}>{car.type} </option>)}
+
                             </select>
                         </label>
 
-                    <label className="form-control w-full max-w-xs">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Vehicle<span className="text-red-600 font-extrabold">*</span></span>
                             </div>
-                            <select className="border-2 rounded-md p-2 px-1 w-full max-w-xs" 
-                            onChange={(e)=>handleVehicle(e.target.value)}
-                            name="vehicle" id="">
-                            <option value=""></option>
-                            {cars.map((car)=> <option value={car.model} key={car.id}>{car.make}- {car.model} </option>)}
-                                
+                            <select className="border-2 rounded-md p-2 px-1 w-full max-w-xs"
+                                onChange={(e) => handleVehicle(e.target.value)}
+                                name="vehicle" id="">
+                                <option value=""></option>
+                                {cars.map((car) => <option value={car.model} key={car.id}>{car.make}- {car.model} </option>)}
+
                             </select>
                         </label>
 
