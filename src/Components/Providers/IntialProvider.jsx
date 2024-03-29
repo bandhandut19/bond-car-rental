@@ -5,41 +5,41 @@ import PropTypes from 'prop-types';
 
 export const InitialContext = createContext(null)
 
-const IntialProvider = ({children}) => {
+const IntialProvider = ({ children }) => {
 
-    const [cars,setCars] = useState([])
-    useEffect(()=>{
+    const [cars, setCars] = useState([])
+    useEffect(() => {
         axios.get('https://exam-server-7c41747804bf.herokuapp.com/carsList')
-        .then(res=> setCars(res.data.data))
-    },[])
+            .then(res => setCars(res.data.data))
+    }, [])
 
     // contact-information form data
-    const [firstName,setFirstName] = useState(null)
-    const [lastName,setLastName] = useState(null)
-    const [email,setEmail] = useState(null)
-    const [phone,setPhone] = useState(null)
+    const [firstName, setFirstName] = useState(null)
+    const [lastName, setLastName] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [phone, setPhone] = useState(null)
 
     // additional charges data
-    const [cdw,setCdw] = useState(null)
-    const [li,setLi] = useState(null)
-    const [rt,setRt] = useState(null)
-    
+    const [cdw, setCdw] = useState(null)
+    const [li, setLi] = useState(null)
+    const [rt, setRt] = useState(null)
+
 
     // vehicle informations
-    const[vehicleType,setVehicleType] = useState(null)
-    const[vehicle,setVehicle] = useState(null)
+    const [vehicleType, setVehicleType] = useState(null)
+    const [vehicle, setVehicle] = useState(null)
 
 
     // pickup-date
-    const [picupDate,setPickupDate] = useState(null)
+    const [pickupDate, setPickupDate] = useState(null)
 
 
     // return-date
-    const [returnDate,setReturnDate] = useState(null)
+    const [returnDate, setReturnDate] = useState(null)
 
 
     // duration
-    const [duration,setDuration] = useState("Set date and time")
+    const [duration, setDuration] = useState(null)
 
     // provided data
     const data = {
@@ -66,16 +66,16 @@ const IntialProvider = ({children}) => {
         // vehicle informations
         vehicleType,
         vehicle,
-        setVehicleType,setVehicle,
+        setVehicleType, setVehicle,
 
         // pickup-date
-        picupDate,
+        pickupDate,
         setPickupDate,
 
         // return-date
         returnDate,
         setReturnDate,
-        
+
         //duration
         duration,
         setDuration
@@ -88,8 +88,24 @@ const IntialProvider = ({children}) => {
 
     // console.log( returnDate?.format('YYYY-MM-DD'))
     // console.log( returnDate?.format('HH:mm'))
-   
+    useEffect(() => {
+        if (pickupDate && returnDate) {
+            const calDur = returnDate.diff(pickupDate);
     
+            const calDurObj = {
+                weeks: Math.floor(calDur / (1000 * 60 * 60 * 24 * 7)),
+                days: Math.floor((calDur % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((calDur % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((calDur % (1000 * 60 * 60)) / (1000 * 60))
+            };
+    
+            setDuration(calDurObj);
+        }
+    }, [pickupDate, returnDate]);
+    
+
+
+
 
     return (
         <InitialContext.Provider value={data}>

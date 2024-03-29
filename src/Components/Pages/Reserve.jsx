@@ -134,7 +134,22 @@ const Reserve = () => {
                             </div>
                             <div>
                                 <div className="border-2 py-1 px-2 rounded-md">
-                                    <h1 className="text-sm"> {duration}</h1>
+                                    <p className="text-sm">
+                                        {duration && (duration.weeks > 0 || duration.days > 0 || duration.hours > 0 || duration.minutes > 0) ? (
+                                            <span>
+                                                {duration.weeks > 0 && <span>{duration.weeks} Week</span>}
+                                                {duration.weeks > 0 && (duration.days > 0 || duration.hours > 0 || duration.minutes > 0) && <span className="ml-1">,</span>}
+                                                {duration.days > 0 && <span className="ml-1">{duration.days} Day</span>}
+                                                {duration.days > 0 && (duration.hours > 0 || duration.minutes > 0) && <span className="ml-1">,</span>}
+                                                {duration.hours > 0 && <span className="ml-1">{duration.hours} Hour</span>}
+                                                {duration.hours > 0 && duration.minutes > 0 && <span className="ml-1">,</span>}
+                                                {duration.minutes > 0 && <span className="ml-1">{duration.minutes} Minute</span>}
+                                            </span>
+                                        ) : "Select date and time"}
+                                    </p>
+
+
+
                                 </div>
                             </div>
 
