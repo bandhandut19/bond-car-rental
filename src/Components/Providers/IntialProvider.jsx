@@ -8,10 +8,13 @@ export const InitialContext = createContext(null)
 const IntialProvider = ({ children }) => {
 
     const [cars, setCars] = useState([])
+    
     useEffect(() => {
-        axios.get('https://exam-server-7c41747804bf.herokuapp.com/carsList')
-            .then(res => setCars(res.data.data))
-    }, [])
+        axios.get('http://localhost:5000/carsinfo')
+            .then(res => setCars(res.data));
+    }, []);
+
+    
 
     // contact-information form data
     const [firstName, setFirstName] = useState(null)
@@ -40,6 +43,10 @@ const IntialProvider = ({ children }) => {
 
     // duration
     const [duration, setDuration] = useState(null)
+
+
+    // selected car
+    const [selectedCar,setSelectedCar] = useState(null)
 
     // provided data
     const data = {
@@ -78,7 +85,11 @@ const IntialProvider = ({ children }) => {
 
         //duration
         duration,
-        setDuration
+        setDuration,
+
+        // selected car
+        selectedCar,
+        setSelectedCar,
 
     }
 
