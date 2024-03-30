@@ -1,6 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
+import generateReservationID from "../utils/generateReservation";
+import { useContext } from "react";
+import { InitialContext } from "../Providers/IntialProvider";
 
 const Navbar = () => {
+    const {setId} = useContext(InitialContext)
+    const handleRerservationButton = ()=>{
+       setId( generateReservationID("reservationid"))
+    }
     return (
         <div className="navbar bg-green-300 ">
             <div className="navbar-start ">
@@ -10,7 +17,7 @@ const Navbar = () => {
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li className="mr-5 text-xl"><NavLink to='/' className='rounded-md'>Home</NavLink></li>
-                        <li><NavLink to='/' className='rounded-md '>Reserve A Car Now </NavLink></li>
+                        <li><NavLink to='/reserve' className='rounded-md  ' onClick={handleRerservationButton}>Reserve A Car Now </NavLink></li>
 
                     </ul>
                 </div>
@@ -19,7 +26,7 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li className="mr-5 text-xl"><NavLink to='/' className='rounded-md'>Home</NavLink></li>
-                    <li className="bg-purple-500 text-xl rounded-md text-white font-extrabold"><NavLink to='/reserve' className='rounded-md'>Reserve A Car Now </NavLink></li>
+                    <li className="bg-purple-500 text-xl rounded-md text-white font-extrabold"><NavLink to='/reserve' onClick={handleRerservationButton} className='rounded-md'>Reserve A Car Now </NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">

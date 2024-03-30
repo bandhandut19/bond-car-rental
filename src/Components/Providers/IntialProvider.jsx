@@ -14,8 +14,8 @@ const IntialProvider = ({ children }) => {
             .then(res => setCars(res.data));
     }, []);
 
-    
-
+    // reservation id generator data
+    const[id,setId] = useState(null)
     // contact-information form data
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
@@ -51,6 +51,11 @@ const IntialProvider = ({ children }) => {
     // provided data
     const data = {
         cars,
+
+        //reservation id
+
+        id,
+        setId,
 
         // contact-information
         setFirstName,
