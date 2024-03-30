@@ -11,12 +11,14 @@ import IntialProvider from './Components/Providers/IntialProvider';
 import Reserve from './Components/Pages/Reserve';
 
 import PDFDocument from './Components/InvoicePDF/PDFDocument';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

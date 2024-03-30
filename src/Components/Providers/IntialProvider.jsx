@@ -10,7 +10,7 @@ const IntialProvider = ({ children }) => {
     const [cars, setCars] = useState([])
     
     useEffect(() => {
-        axios.get('http://localhost:5000/carsinfo')
+        axios.get('https://bond-car-rental-backend.vercel.app/carsinfo')
             .then(res => setCars(res.data));
     }, []);
 
