@@ -4,16 +4,18 @@ import 'react-datetime/css/react-datetime.css'
 import ChargesSummary from "../ChargesSummary/ChargesSummary";
 import ReservationDetails from "../ReservationDetails/ReservationDetails";
 import VehicleInformation from "../VehicleInformation/VehicleInformation";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDFDocument from "../InvoicePDF/PDFDocument";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import PDFDocument from "../InvoicePDF/PDFDocument";
+import { Link } from "react-router-dom";
 
 
 const Reserve = () => {
     const { setFirstName, setLastName, setEmail, setPhone,
-        setCdw, setLi, setRt,email,firstName,lastName,phone
+        setCdw, setLi, setRt,
+        // email,firstName,lastName,phone
     } = useContext(InitialContext)
 
-    const data = {email,firstName,lastName,phone}
+    // const data = {email,firstName,lastName,phone}
 
     // Contact Information Data handle
     
@@ -55,7 +57,7 @@ const Reserve = () => {
                     <h1 className="font-extrabold lg:text-2xl">Reservation</h1>
                 </div>
                 <div className="flex-none">
-                    <PDFDownloadLink document={<PDFDocument data={data}></PDFDocument>} fileName="bcr_invoice_">
+                    {/* <PDFDownloadLink document={<PDFDocument data={data}></PDFDocument>} fileName="bcr_invoice_">
                         {({loading})=>
                         
                         loading ?
@@ -64,7 +66,20 @@ const Reserve = () => {
                         <button  className=" px-2 py-1 rounded-md bg-purple-500 text-white">Print / Download</button>
                         }
                         
-                    </PDFDownloadLink>
+                    </PDFDownloadLink> */}
+
+                     
+                        {
+                        
+                        
+                        <Link to='/invoice'>
+                        <button className=" px-2 py-1 rounded-md bg-purple-500 text-white">Print / Download</button>
+                        </Link>
+                        }
+                        
+                    
+
+
                 </div>
             </div>
 

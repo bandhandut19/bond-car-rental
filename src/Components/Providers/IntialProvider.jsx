@@ -51,9 +51,30 @@ const IntialProvider = ({ children }) => {
     // download and print
     const [generatePDF,setGeneratePDF] = useState(null)
 
+
+    // invoice data
+
+    const [dailyTotal,setDailyTotal] =useState(0)
+    const [weeklyTotal,setWeeklyTotal] =useState(0)
+    const [hourlyTotal,sethourlyTotal] =useState(0)
+
+    const [total,setTotal] = useState(0)
+
     // provided data
     const data = {
         cars,
+
+        // invoice data
+        total,
+        setTotal,
+
+        dailyTotal,
+        setDailyTotal,
+        weeklyTotal,
+        setWeeklyTotal,
+        hourlyTotal,
+        sethourlyTotal,
+
 
         //reservation id
 

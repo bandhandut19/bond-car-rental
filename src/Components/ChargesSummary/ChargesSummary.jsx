@@ -2,7 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { InitialContext } from "../Providers/IntialProvider";
 
 const ChargesSummary = () => {
-    const { cdw, li, rt, selectedCar, duration } = useContext(InitialContext)
+    const { cdw, li, rt, selectedCar, duration, total, setTotal,
+        setDailyTotal,
+        setWeeklyTotal,
+        sethourlyTotal, } = useContext(InitialContext)
     const weeks = duration?.weeks
     const days = duration?.days
     const hours = duration?.hours
@@ -13,14 +16,13 @@ const ChargesSummary = () => {
 
     const calHourlyRates = hours * (selectedCar?.rates?.hourly)
 
-    const [total, setTotal] = useState(0)
     const [rentalTax, setRentalTax] = useState(0)
 
 
 
     useEffect(() => {
         const additionalTotal = (cdw && 9.00) + (li && 15.00)
-        let total = additionalTotal
+        let total = additionalTotal + calDailyRates + calHourlyRates + calWeeklyRates
         if (rt) {
 
             (rt && setTotal((total + (total * 11.5) / 100).toFixed(2)));
@@ -29,9 +31,13 @@ const ChargesSummary = () => {
         else {
 
             setTotal(total)
+            setDailyTotal(calDailyRates)
+            setWeeklyTotal(calWeeklyRates)
+            sethourlyTotal(calHourlyRates)
+
         }
 
-    }, [cdw, li, rt, rentalTax])
+    }, [cdw, li, rt, rentalTax, calDailyRates, calHourlyRates, calWeeklyRates])
 
     // console.log(calDailyRates, calWeeklyRates, calHourlyRates)
 
@@ -68,7 +74,7 @@ const ChargesSummary = () => {
                     {/* weekly */}
                     {
 
-                        weeks > 0 && 
+                        weeks > 0 &&
                         <tr>
                             <td>Weekly</td>
                             <td>{unit}</td>
@@ -80,7 +86,7 @@ const ChargesSummary = () => {
                     {/* Hourly */}
                     {
 
-                        hours > 0 && 
+                        hours > 0 &&
                         <tr>
                             <td>Hourly</td>
                             <td>{unit}</td>
