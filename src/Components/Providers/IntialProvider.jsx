@@ -48,6 +48,9 @@ const IntialProvider = ({ children }) => {
     // selected car
     const [selectedCar,setSelectedCar] = useState(null)
 
+    // download and print
+    const [generatePDF,setGeneratePDF] = useState(null)
+
     // provided data
     const data = {
         cars,
@@ -96,10 +99,16 @@ const IntialProvider = ({ children }) => {
         selectedCar,
         setSelectedCar,
 
+        //pdf
+        generatePDF,
+        setGeneratePDF,
+
     }
 
     // console.log( picupDate?.format('YYYY-MM-DD'))
     // console.log( picupDate?.format('HH:mm'))
+
+    
 
 
     // console.log( returnDate?.format('YYYY-MM-DD'))

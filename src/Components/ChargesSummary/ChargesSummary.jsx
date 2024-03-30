@@ -53,7 +53,7 @@ const ChargesSummary = () => {
 
                     {/* daily */}
                     {
-
+                        days > 0 &&
                         <tr>
                             <td>Daily</td>
                             <td>{unit}</td>
@@ -68,13 +68,25 @@ const ChargesSummary = () => {
                     {/* weekly */}
                     {
 
-
+                        weeks > 0 && 
                         <tr>
                             <td>Weekly</td>
                             <td>{unit}</td>
                             <td>${selectedCar?.rates?.weekly ? selectedCar?.rates?.weekly : 0}</td>
                             {/* total */}
                             <td>${unit * calWeeklyRates}</td>
+                        </tr>
+                    }
+                    {/* Hourly */}
+                    {
+
+                        hours > 0 && 
+                        <tr>
+                            <td>Hourly</td>
+                            <td>{unit}</td>
+                            <td>${selectedCar?.rates?.hourly ? selectedCar?.rates?.hourly : 0}</td>
+                            {/* total */}
+                            <td>${unit * calHourlyRates}</td>
                         </tr>
                     }
 

@@ -10,6 +10,8 @@ import Home from './Components/Home/Home';
 import IntialProvider from './Components/Providers/IntialProvider';
 import Reserve from './Components/Pages/Reserve';
 
+import PDFDocument from './Components/InvoicePDF/PDFDocument';
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/reserve',
         element: <Reserve></Reserve>,
+      },
+      {
+        path: '/invoice',
+        element: <PDFDocument></PDFDocument>,
       },
     ]
   },
