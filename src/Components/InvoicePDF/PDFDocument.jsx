@@ -103,7 +103,7 @@ const PDFDocument = () => {
     })
 
     return (
-
+        
         <PDFViewer style={styles.view}>
 
             <Document>
@@ -174,27 +174,7 @@ const PDFDocument = () => {
 
 
         </PDFViewer>
-        // <Document>
-        //     <Page size="A4" style={styles.body}>
-
-        //         <Image
-        //             style={styles.image}
-        //             src="../../assets/images/bond-car-rental.jpg"
-        //         />
-
-
-        //         <Text style={styles.title}>Renter Info</Text>
-        //         <ul className='flex flex-col gap-2 text-xl'>
-
-        //             <li className='mt-5'>
-        //                 <Text>Name: {firstName} {lastName}</Text>
-        //             </li>
-        //             <Text>Email: {email}</Text>
-        //             <Text>Phone: {phone}</Text>
-        //         </ul>
-
-        //     </Page>
-        // </Document>
+        
     );
 };
 PDFDocument.propTypes = {
