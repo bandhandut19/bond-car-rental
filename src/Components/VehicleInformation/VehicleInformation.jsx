@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext,useEffect, useState } from "react";
 import { InitialContext } from "../Providers/IntialProvider";
 const VehicleInformation = () => {
     const {
@@ -21,6 +21,15 @@ const VehicleInformation = () => {
         
     }
 
+
+    useEffect(() => {
+        if (vehicle && vehicleType) {
+            const selectedCar = cars.find(car => car.type === vehicleType && car.model === vehicle);
+            setSelectedCar(selectedCar);
+        }
+    }, [vehicleType, vehicle, cars,setSelectedCar]);
+
+
     const [showModal_1,setShowModal_1] = useState(false)
     const [showModal_2,setShowModal_2] = useState(false)
 
@@ -30,6 +39,7 @@ const VehicleInformation = () => {
             // console.log(vehicle,vehicleType)
 
             const selectedCar = cars.find(car => car.type === vehicleType && car.model === vehicle)
+            
             // console.log(selectedCar)
             if(selectedCar == null){
                 setShowModal_1(true)
@@ -38,7 +48,6 @@ const VehicleInformation = () => {
 
                 setShowModal_2(true)
             }
-            setSelectedCar(selectedCar)
         }
         else {
             setShowModal_1(true)

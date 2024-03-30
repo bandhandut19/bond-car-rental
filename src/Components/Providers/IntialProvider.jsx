@@ -121,8 +121,6 @@ const IntialProvider = ({ children }) => {
     
 
 
-
-
     return (
         <InitialContext.Provider value={data}>
             {children}

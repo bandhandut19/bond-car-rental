@@ -16,7 +16,7 @@ const ReservationDetails = () => {
                 </div>
                 <div className="input input-bordered w-full max-w-xs">
 
-                    <span className="ml-2 text-green-700 font-bold italic">{id}</span>
+                    <span className=" text-green-700 font-bold italic">{id}</span>
 
                 </div>
             </label>
