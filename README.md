@@ -36,7 +36,7 @@ replace the vercel backend host domain with your localhost and Enjoy !
 - After selecting type and model of a vehicle user can click the "View Selected Car Details" button to view the selected car details.
 - Thirdly, user need to select pickup date and return date . After selecting dates The duration will be shown in the form under Reservation Details
 - Fourthly, user can select additonal charges if needed.
-- User can see charges summary simultinously while selecting dates and vechicles.
+- User can see charges summary with daily,weekly,hourly rates simultinously while selecting dates and vechicles.
 - Finally users can click "Print/Downlaod" button to print , download or read their reservation invoice\
 
 ## FutureFeatures
