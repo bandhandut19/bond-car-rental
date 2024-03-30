@@ -96,7 +96,7 @@ const VehicleInformation = () => {
             <input type="checkbox" id="my_modal_6" className="modal-toggle" onChange={handleChange} checked={showModal_2} />
             {showModal_2 && (
                 <div className="modal" role="dialog">
-                    <div className="modal-box bg-green-400 flex items-center justify-center flex-col">
+                    <div className="modal-box bg-green-400 lg:flex lg:items-center lg:justify-center flex-col">
                         <h3 className="font-bold text-lg">Selected vehicle Information</h3>
 
                         <div className="mt-5">
