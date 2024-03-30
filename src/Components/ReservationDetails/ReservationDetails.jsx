@@ -2,9 +2,12 @@ import { CiCalendarDate } from "react-icons/ci";
 import Datetime from 'react-datetime';
 import { useContext } from "react";
 import { InitialContext } from "../Providers/IntialProvider";
+import generateReservationID from "../utils/generateReservation";
 const ReservationDetails = () => {
 
     const { setPickupDate, pickupDate, setReturnDate, returnDate, duration } = useContext(InitialContext)
+
+   
     return (
         <div className="mt-2 border-2 px-5 py-3 rounded-md" >
 
@@ -14,7 +17,7 @@ const ReservationDetails = () => {
                 </div>
                 <div className="input input-bordered w-full max-w-xs">
 
-                    {/* will generate random reservation id here  */}
+                    <span className="ml-2 text-green-700 font-bold italic">{generateReservationID("reservationid")}</span>
 
                 </div>
             </label>
