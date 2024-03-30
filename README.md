@@ -42,6 +42,7 @@ replace the vercel backend host domain with your localhost and Enjoy !
 ## FutureFeatures
 - Login/ Register
 - Storing the Invoice and user data in mongodb
+- Calculating the smallest amount considering hours,days and weeks.
 - many coming soon 
 
 
